@@ -1,0 +1,175 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+	font-family: "Dank Mono";
+	height: 100vh;
+	width: 100vw;
+	background-image: repeating-linear-gradient(20deg, 
+		hsl(280, 80%, 40%), hsl(280, 60%, 40%), hsl(280, 70%, 40%));
+	background-repeat: no-repeat;
+}
+
+input, select {
+	color: #555;
+}
+
+textarea {
+	display: block;
+}
+
+.header {
+	display: block;
+	width: 100vw;
+	padding: 25px 10px;
+	text-align: center;
+	color: #fff;
+	font-size: 25px;
+}
+
+.header::after {
+	content: "";
+	display: block;
+	width: 400px;
+	background: #ccc;
+	height: 1px;
+	margin: 20px auto;
+}
+
+.body {
+	width: 80vw;
+	margin: 0 auto
+}
+
+.url {
+	background: #fff;
+	border-radius: 4px;
+	display: flex;
+	flex-direction: row;
+	border-bottom: 1px solid #aaa;
+}
+
+.url__method {
+	width: 20%;
+}
+
+.url__address {
+	width: 55%;
+}
+
+.url__toggle-body {
+	width: 15%;
+}
+
+.url__send {
+	width: 15%;
+}
+
+.url__method .url__method-options,
+.url__address .url__address-field {
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	margin: 0;
+	border: none;
+}
+
+.url__address .url__address-field {
+	border-left: 1px solid #ccc;
+}
+
+.url__toggle-body {
+	border: 0;
+	background: hsl(280, 70%, 50%);
+	color: #fff;
+}
+
+.url__send {
+	border: 0;
+	border-left: 1px solid #ccc;
+	background: hsl(280, 70%, 50%);
+	color: #fff;
+}
+
+.req__headers {
+	background: #ddd;
+	display: flex;
+	flex-direction: row;
+}
+
+.req__headers .req__header {
+	padding: 10px 13px;
+	width: 35%;
+}
+
+.req__headers .req__header .req__header-options {
+	padding: 10px;
+	font-size: 14px;
+}
+
+.req__body-wrap {
+	display: none;
+	position: relative;
+	width: 100%;
+	height: 0;
+	transition: all 0.2s;
+	overflow: hidden;
+}
+
+.req__body-wrap.slide-down {
+	display: block;
+	height: 200px;
+	animation-name: slideDown;
+	animation-iteration-count: 1;
+	animation-duration: 0.3s;
+}
+
+.req__body-tag {
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: hsl(280, 70%, 50%);
+	color: #fff;
+	padding: 10px;
+}
+
+.req__body {
+	width: 100%;
+	height: 200px;
+	background: rgb(40, 40, 40);
+	color: #fff;
+	padding: 10px;
+	font-size: 16px;
+	margin: 0;
+}
+
+.res {
+	position: relative;
+	width: 100%;
+	transition: all 0.2s;
+	overflow: hidden;
+}
+
+.res__body-tag {
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: hsl(280, 70%, 50%);
+	color: #fff;
+	padding: 10px;
+}
+
+.res__body {
+	width: 100%;
+	height: 220px;
+	background: rgb(40, 40, 40);
+	color: #fff;
+}
+
+@keyframes slideDown {
+	from {
+		height: 0;
+	}
+	to {
+		height: 200px;
+	}
+}
