@@ -67,12 +67,26 @@ function prettyPrintJSON(json) {
 	const indent = '    ';
 	let out = `{${recurse(json, 1, '')}\n}`;
 
+	function isObject(o) {
+		return !!o && Object.getPrototypeOf(o) === Object.prototype;
+	}
+
 	function recurse(obj, level, curOut) {
 		for (let field in obj) {
 			let value = obj[field];
 			curOut += `\n${indent.repeat(level)}"${field}": `;
-			if (Object.getPrototypeOf(value) === Object.prototype) {
+			if (isObject(value)) {
 				curOut += `{${recurse(value, level + 1, '')}\n${indent.repeat(level)}}`;
+			} else if (Array.isArray(value)) {
+				if (isObject(value[0])) {
+					curOut += '[';
+					value.forEach(o => {
+						curOut += `{${recurse(o, level + 1, '')}\n${indent.repeat(level)}}`
+					});
+					curOut += ']';
+				} else {
+					curOut += `[ ${value.join(', ')} ]`;
+				}
 			} else {
 				if (!Number.isFinite(value))
 					value = '"' + value + '"';
