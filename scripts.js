@@ -8,10 +8,13 @@ window.addEventListener('load', () => {
 	const fldResBody = document.querySelector('.res__body');
 	const fldMethod = document.querySelector('#http-method');
 	const fldContentType = document.querySelector('#content-type');
+	const fldToken = document.querySelector('#x-access-token');
 	const fldUrl = document.querySelector('#url-address');
 
 	let hasBody = false;
 
+	fldMethod.value = localStorage.getItem('method') || 'GET';
+	fldToken.value = localStorage.getItem('token') || '';
 	fldUrl.value = localStorage.getItem('url') || '';
 	try {
 		fldReqBody.value = prettyPrintJSON(JSON.parse(localStorage.getItem('reqBody')));
@@ -31,6 +34,10 @@ window.addEventListener('load', () => {
 		let body = fldReqBody.value;
 
 		headers['Content-Type'] = fldContentType.value;
+		if (fldToken.value) {
+			headers['x-access-token'] = fldToken.value;
+			localStorage.setItem('token', fldToken.value);
+		}
 
 		if (headers['Content-Type'] === 'application/json') {
 			try {
@@ -53,6 +60,7 @@ window.addEventListener('load', () => {
 			localStorage.setItem('reqBody', body);
 		}
 
+		localStorage.setItem('method', method);
 		localStorage.setItem('url', url);
 
 		fetch(url, options)

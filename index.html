@@ -29,11 +29,15 @@
 				<div class="req__headers">
 					<div class="req__header">
 						<label for="content-type">Content-Type: </label>
-						<select class="req__header-options" name="req__header-options" id="content-type">
+						<select class="req__header-value" name="req__header-value" id="content-type">
 							<option value="application/json" selected> application/json</option>
 							<option value="text/plain"> text/plain</option>
 							<option value="text/javascript"> text/javascript</option>
 						</select>
+					</div>
+					<div class="req__header">
+						<label for="x-access-token">x-access-token: </label>
+						<input class="req__header-value" name="req__header-value" id="x-access-token">
 					</div>
 				</div>
 				<div class="req__body-wrap">

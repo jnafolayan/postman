@@ -101,9 +101,10 @@ textarea {
 	width: 35%;
 }
 
-.req__headers .req__header .req__header-options {
+.req__headers .req__header .req__header-value {
 	padding: 10px;
 	font-size: 14px;
+	min-width: 60%;
 }
 
 .req__body-wrap {
